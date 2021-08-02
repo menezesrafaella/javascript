@@ -4,25 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>CEP</title>
 </head>
 <body>
 
-    <form name="cadastro" id="cadastro">
+    <form name="register" id="register">
         <label>Digite o CEP</label>
-        <input type="text" id="cep" maxlength="8" minlength="8" required>
+        <input type="text" name="cep" id="cep" maxlength="8" minlength="8" required>
+        <span class="err"></span>
         <label>Endereço</label>
-        <input type="text" id="address">
+        <input type="text" name="address" id="address">
         <label>Número</label>
-        <input type="text" id="number">
+        <input type="text" name="number" id="number">
         <label>Bairro</label>
-        <input type="text" id="district">
+        <input type="text" name="district" id="district">
         <label>Complemento</label>
-        <input type="text" id="complement">
+        <input type="text" name="complement" id="complement">
         <label>Estado</label>
-        <input type="text" id="state">
+        <input type="text" name="state" id="state">
         <label>Cidade</label>
-        <input type="text" id="city">
+        <input type="text" name="city" id="city">
     </form>
 
     <script src="script.js"></script>

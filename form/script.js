@@ -3,6 +3,7 @@ const city = document.getElementById('city');
 const district = document.getElementById('district');
 const uf = document.getElementById('state');
 const nroCep = document.getElementById('cep');
+const form = document.getElementById('register');
 let nro;
 let cep;
 
@@ -10,6 +11,17 @@ nroCep.addEventListener('change' , handleEvent);
 
 function handleEvent(event){
     event.preventDefault();
+
+    const target = event.target;
+
+    if(!target.checkValidity()){
+        target.classList.add('validation-error');
+        target.nextElementSibling.innerText = target.validationMessage;
+    } else {
+        target.classList.remove('validation-error');
+        target.nextElementSibling.innerText = ' ';
+    }
+
     nro = event.target.value
     searchCep(nro);
 }
