@@ -6,9 +6,15 @@ const nroCep = document.getElementById('cep');
 let nro;
 let cep;
 
-nroCep.addEventListener('change' , (e) => {
-    nro = e.target.value
-    console.log(nro.length == 8)
+nroCep.addEventListener('change' , handleEvent);
+
+function handleEvent(event){
+    event.preventDefault();
+    nro = event.target.value
+    searchCep(nro);
+}
+
+function searchCep(nro){
     cep = fetch(`https://viacep.com.br/ws/${nro}/json/`);
 
     if (nro.length == 8) { 
@@ -22,7 +28,7 @@ nroCep.addEventListener('change' , (e) => {
             uf.value = body.uf
         })
     }
-})
+}
 
 
 
