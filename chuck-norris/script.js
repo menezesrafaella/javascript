@@ -1,17 +1,13 @@
-const random = document.querySelector('.joke');
-const button = document.querySelector('.next');
-
-
-function randomJoke(){
-    const api = fetch('https://api.chucknorris.io/jokes/random');
-    api
-    .then( r => 
-        r.json())
-        .then
-        (body => {
-            let joke = body.value
-            random.innerText = joke;
-        })
+async function randomJoke() {
+  const random = document.querySelector(".joke");
+  const button = document.querySelector(".next");
+  try {
+    const api = await fetch("https://api.chucknorris.io/jokes/random");
+    const joke = await api.json();
+    random.innerText = joke.value;
+  } catch (err) {
+    console.log(err);
+  }
 }
-    
-button.addEventListener('click', randomJoke)
+
+button.addEventListener("click", randomJoke);

@@ -1,13 +1,13 @@
-const bitcoin = fetch('https://blockchain.info/ticker');
-const value = document.querySelector('#value')
-
-function fetchBitcoin(){
-    bitcoin
-    .then(r => r.json())
-    .then(body => {
-        let real = body.BRL.buy.replace('.', ',');
-        value.innerText = 'R$ ' + real;        
-    })
+async function fetchBitcoin(){
+    const value = document.querySelector('#value')
+    try {
+        const bitcoin = fetch('https://blockchain.info/ticker');
+        const response = await (await bitcoin).json();
+        let real = response.BRL.buy;
+        value.innerText = 'R$ ' + real;
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 setInterval(fetchBitcoin, 500);

@@ -26,19 +26,18 @@ function handleEvent(event){
     searchCep(nro);
 }
 
-function searchCep(nro){
-    cep = fetch(`https://viacep.com.br/ws/${nro}/json/`);
-
-    if (nro.length == 8) { 
-        cep
-        .then(r =>  
-            r.json())
-        .then(body => {
-            address.value = body.logradouro;
-            city.value = body.localidade;
-            district.value = body.bairro
-            uf.value = body.uf
-        })
+async function searchCep(nro){
+    try{ 
+        cep = fetch(`https://viacep.com.br/ws/${nro}/json/`);
+        if (nro.length == 8) { 
+        const body = await (await cep).json();
+        address.value = body.logradouro;
+        city.value = body.localidade;
+        district.value = body.bairro
+        uf.value = body.uf
+    }
+        } catch (err) {
+            console.log(err);
     }
 }
 
